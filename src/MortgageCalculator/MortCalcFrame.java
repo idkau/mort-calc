@@ -4,6 +4,9 @@
  */
 package MortgageCalculator;
 
+import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ItemEvent;
 import java.awt.print.PrinterException;
@@ -271,6 +274,8 @@ public class MortCalcFrame extends javax.swing.JFrame {
 
         TabbedPane.addTab("Summary", summaryPane);
 
+        graphPanel.setBackground(new java.awt.Color(254, 254, 254));
+
         javax.swing.GroupLayout graphPanelLayout = new javax.swing.GroupLayout(graphPanel);
         graphPanel.setLayout(graphPanelLayout);
         graphPanelLayout.setHorizontalGroup(
@@ -380,6 +385,7 @@ public class MortCalcFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_otherCheckBoxActionPerformed
 
     private void calculateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calculateButtonActionPerformed
+       //calculate the mortgage term and display the fields 
         
     try {  MortgageClient client = new MortgageClient(clientName.getText(), Double.parseDouble(annualInterestRate.getText()), + 
                Integer.parseInt(loanYears.getText()), Double.parseDouble(loanAmount.getText()), +
@@ -393,7 +399,11 @@ public class MortCalcFrame extends javax.swing.JFrame {
         errorLabel.setText("Fill in all of the boxes to continue.");
     
     } 
-      
+    Graph g = new Graph();
+    graphPanel.add(g);
+    
+   
+        
         
     }//GEN-LAST:event_calculateButtonActionPerformed
 
@@ -410,7 +420,7 @@ public class MortCalcFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_dummyClientActionPerformed
 
     private void helpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_helpActionPerformed
-        
+        //help document that shows up on the summary pane
        
         summaryOutput.setText("\t\t\t\tHelp Document\n\n" +
                 "\tThis Mortgage application will get your information and calculate the cost of a mortgage on a house. \nIt will also figure out how much is " +
@@ -433,9 +443,10 @@ public class MortCalcFrame extends javax.swing.JFrame {
             otherFee.setText("0");
         }
     }//GEN-LAST:event_otherCheckBoxItemStateChanged
-
+//clear the contents of the text boxes
     private void clearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearActionPerformed
-         clientName.setText("");
+         
+        clientName.setText("");
       annualInterestRate.setText("");
       loanYears.setText("");
       loanAmount.setText("");
@@ -444,6 +455,8 @@ public class MortCalcFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_clearActionPerformed
 
     private void printActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_printActionPerformed
+       //print summay field
+        
         try {
             summaryOutput.print();
         } catch (PrinterException ex) {
@@ -455,23 +468,24 @@ public class MortCalcFrame extends javax.swing.JFrame {
 
     private void saveClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveClientActionPerformed
          final javax.swing.JMenuItem savedClient;
-        
+        //creates a new client
         final MortgageClient client = new MortgageClient();
         
         client.createClient(new MortgageClient(clientName.getText(), Double.parseDouble(annualInterestRate.getText()), + 
                Integer.parseInt(loanYears.getText()), Double.parseDouble(loanAmount.getText()), +
                Integer.parseInt(month.getText()), Integer.parseInt(year.getText()), Double.parseDouble(hoaFee.getText()), +
                Double.parseDouble(otherFee.getText())));
-        
+        //saves the client to a new menu item
         savedClient = new javax.swing.JMenuItem();
         clientMenu.add(savedClient);
         savedClient.setText(clientName.getText());
-        
+        // create listener for the menu item
         savedClient.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 loadClientActionPerformed(evt);
             }
-
+            //when clicking on a client name, get the name from the array and populate the text fields with the user data
+            
              void loadClientActionPerformed(ActionEvent evt) {
 
                 for (int i = 0; i < client.getActiveClientAccountCount(); i++) {

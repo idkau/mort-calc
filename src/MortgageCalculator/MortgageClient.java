@@ -70,79 +70,7 @@ public class MortgageClient {
     }
     
     // Change input after initial var entry.
-    
-     public void setName(String clientName) {
-        
-        name = clientName;
-    }
-    
-    public void setAnnualInterestRate(double rate) {
-        
-        annualInterestRate = rate;
-    }
-    
-    public void setLoanYears(int years) {
-        
-        loanYears = years;
-    }
-    
-    public void setLoanAmount(double amount) {
-        
-        loanAmount = amount;
-    }
-    
-    public void setStartMonth(int month) {
-        
-        startMonth = month;
-    }
-    
-    public void setStartYear(int year) {
-        
-        startYear = year;
-    }
-    
-    public void setHoaFee(double fee) {
-        
-        hoaFee = fee;
-    }
-    
-    public void setOtherFee(double fee) {
-        
-        otherFee = fee;
-    }
-    
-    //Setters after initial input.
-    
-    public void setMonthlyInterestRate(double annualInterestRate) {
-        
-        monthlyInterestRate = annualInterestRate / 1200;
-        
-    }
-    
-    public void setMonthlyPayment(double loanAmount, double monthlyInterestRate, int loanYears) {
-        
-        monthlyPayment = loanAmount * monthlyInterestRate / (1 - 1 / Math.pow(1 +
-				monthlyInterestRate, loanYears * 12));
-        monthlyPayment = (int)(monthlyPayment * 100) / 100.0;
-        
-    }
-    
-    public void setTotalPayment(double monthlyPayment, int loanYears) {
-        
-        totalPayment = monthlyPayment * loanYears * 12;
-        totalPayment = (int)(totalPayment * 100) / 100.0;
-    }
-    
-    public void setMonthsLeft(int loanYears) {
-        
-        monthsLeft = loanYears *12;
-    }
-    
-    public void setRemainingBal(double loanAmount) {
-        
-        remainingBal = loanAmount;
-    }
-    
+ 
     public String getName() {
         
         return name;
@@ -156,6 +84,11 @@ public class MortgageClient {
     public double getMonthlyInterestRate() {
         
         return monthlyInterestRate;
+    }
+    
+    public double getMonthlyPrinciple() {
+        
+        return monthlyPrinciple;
     }
     
     public int getLoanYears() {
@@ -269,6 +202,7 @@ public class MortgageClient {
         }        
     }
 
+    
    
         
     }

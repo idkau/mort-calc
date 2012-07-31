@@ -4,22 +4,29 @@
  */
 package MortgageCalculator;
 
-import java.awt.Graphics;
+import java.awt.*;
 
-import javax.swing.JPanel;
+import javax.swing.*;
 
 /**
  *
  * @author jason
  */
 
-public class Graph extends MortgageClient {
+public class Graph extends JPanel {
     
    
+    public Graph(){
+        
+    }
+    
+    
+    @Override
   public void paintComponent(Graphics g){
        
+        super.paintComponent(g);
         
-        g.drawOval((int)getMonthlyInterestRate(), 120, 2, 2 );
+        g.drawOval(12, 120, 5, 5 );
     }
     
   
