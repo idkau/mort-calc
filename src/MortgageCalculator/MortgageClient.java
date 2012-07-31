@@ -4,11 +4,10 @@
  */
 package MortgageCalculator;
 
-import java.awt.Graphics;
 
 /**
  *
- * @author jason
+ * @author jason pearl
  */
 public class MortgageClient {
     
@@ -29,6 +28,7 @@ public class MortgageClient {
     private double remainingBal;
     private double monthlyInterest;
     private double monthlyPrinciple;
+    
      MortgageClient[] clientAccount;
     private int activeClientAccountCount;
 
@@ -192,6 +192,7 @@ public class MortgageClient {
 		return output = result.toString();
 		 
 	} 
+    
     void createClient(MortgageClient client) {
         
         int i = 0;

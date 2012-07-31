@@ -4,9 +4,6 @@
  */
 package MortgageCalculator;
 
-import java.awt.Component;
-import java.awt.Dimension;
-import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ItemEvent;
 import java.awt.print.PrinterException;
